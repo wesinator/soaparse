@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-class SOA:
+class SOArecord:
     def __init__(self, nameserver, raw_email, parsed_email, date, ttl):
         self.nameserver = nameserver
 
@@ -27,7 +27,7 @@ def soa_parse(authority_data):
 
         ttl = soa_data[3]
 
-        return SOA(nameserver, raw_email, parsed_email, date, ttl)
+        return SOArecord(nameserver, raw_email, parsed_email, date, ttl)
 
     except IndexError as e:
         print("error parsing SOA data field:\n" + e)
