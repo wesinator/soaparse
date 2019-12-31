@@ -1,7 +1,6 @@
 package soaparse
 
 import (
-	"fmt"
 	"strings"
 )
 
