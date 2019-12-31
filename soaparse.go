@@ -1,4 +1,4 @@
-package main
+package soaparse
 
 import (
 	"fmt"
@@ -46,9 +46,4 @@ func SOAparse (soaString string) SOArecord {
 	soa.ttl = parts[3]
 
 	return soa
-}
-
-func main() {
-	var soa = SOAparse("ns.example.com. test.example.com. 20180203 60")
-	fmt.Println(soa)
 }
