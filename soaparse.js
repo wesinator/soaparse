@@ -27,17 +27,13 @@ function soaParse(soaString) {
 function emailFromSOA(soaEmailString) {
     /* Index of the second to last ".", likely the char where @ email address is
     assumes the email hostname does not have a subdomain */
-    var i = soaEmailString.lastIndexOf(".",
-                            soaEmailString.lastIndexOf(".") - 1
-                        );
-
-    var parsedEmail = replaceAt(soaEmailString, "@", i)
-
+    var i = secondToLastInstance(soaEmailString, ".");
+    var parsedEmail = replaceAt(soaEmailString, "@", i);
     return parsedEmail;
 }
 
 function removeLastChar(str) {
-    return str.substr(0, str.length - 1)
+    return str.substr(0, str.length - 1);
 }
 
 // Index of the second to last instance of char
