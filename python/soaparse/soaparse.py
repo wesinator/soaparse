@@ -30,7 +30,7 @@ def soa_parse(authority_data):
         return SOArecord(nameserver, raw_email, parsed_email, date, ttl)
 
     except IndexError as e:
-        print("error parsing SOA data field:\n" + e)
+        print("error parsing SOA data field:\n" + repr(e))
         return None
 
 
