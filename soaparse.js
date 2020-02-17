@@ -1,25 +1,32 @@
 function soaParse(soaString) {
+    // https://www.ripe.net/publications/docs/ripe-203
     var soaRecord = {
-        nameserver: "",
+        mname: "",
 
-        raw_email: "",
+        rname: "",
         parsed_email: "",
 
-        date: "",
+        serial: "",
 
-        ttl: 0,
+        refresh: null,
+        retry: null,
+        expire: null,
+        minimum: null,
     };
 
     var soaParts = soaString.split(" ");
 
-    soaRecord.nameserver = removeLastChar(soaParts[0]);
+    soaRecord.mname = removeLastChar(soaParts[0]);
 
-    soaRecord.raw_email = removeLastChar(soaParts[1]);
-    soaRecord.parsed_email = emailFromSOA(soaRecord.raw_email);
+    soaRecord.rname = removeLastChar(soaParts[1]);
+    soaRecord.parsed_email = emailFromSOA(soaRecord.rname);
 
-    soaRecord.date = soaParts[2];
+    soaRecord.serial = soaParts[2];
 
-    soaRecord.ttl = parseInt(soaParts[3]);
+    soaRecord.refresh = parseInt(soaParts[3]);
+    soaRecord.retry = parseInt(soaParts[4]);
+    soaRecord.expire = parseInt(soaParts[5]);
+    soaRecord.minimum = parseInt(soaParts[6]);
 
     return soaRecord;
 }

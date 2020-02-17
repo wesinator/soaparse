@@ -5,14 +5,17 @@ import (
 )
 
 type SOArecord struct {
-	nameserver string
+	mname string
 
-	raw_email string
+	rname string
 	parsed_email string
 
-	date string
+	serial string
 
-	ttl string
+	refresh string
+	retry string
+	expire string
+	minimum string
 }
 
 // return index of second to last occurrence of char in string
@@ -35,14 +38,17 @@ func SOAparse (soaString string) SOArecord {
 	var parts []string = strings.Split(soaString, " ")
 
 	var soa SOArecord
-	soa.nameserver = strings.TrimSuffix(parts[0], ".")
+	soa.mname = strings.TrimSuffix(parts[0], ".")
 
-	soa.raw_email = strings.TrimSuffix(parts[1], ".")
-	soa.parsed_email = EmailFromSOA(soa.raw_email)
+	soa.rname = strings.TrimSuffix(parts[1], ".")
+	soa.parsed_email = EmailFromSOA(soa.rname)
 
-	soa.date = parts[2]
+	soa.serial = parts[2]
 
-	soa.ttl = parts[3]
+	soa.refresh = parts[3]
+	soa.retry = parts[4]
+	soa.expire = parts[5]
+	soa.minimum = parts[6]
 
 	return soa
 }
