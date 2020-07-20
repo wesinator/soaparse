@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 setup(name='soaparse',
-      version='1.2.1',
+      version='1.3.0',
       description='Sane, modular DNS authority (SOA) record parsing',
       long_description=readme,
       long_description_content_type='text/markdown',
