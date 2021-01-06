@@ -43,7 +43,7 @@ def soa_parse(authority_data):
         return SOArecord(mname, rname, email_parsed_last, email_parsed_first, serial, refresh, retry, expire, minimum)
 
     except IndexError as e:
-        print("Error parsing SOA data fields for '{}':\n".format(authority_data), e)
+        print("Error parsing SOA data fields for '{}': ".format(authority_data), e)
         return None
 
 
