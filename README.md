@@ -6,7 +6,11 @@ Sane, modular DNS [SOA record](https://en.wikipedia.org/wiki/SOA_record) parsing
 
  - Fields are based on https://www.ripe.net/publications/docs/ripe-203
 
- - The best-guess email address is parsed from the `rname` field
-   - Unlike most implementations that just lazily replace the first occurrence of a `.`, this parsing assumes the second from last `.` character is location of the email `@`
+ The best-guess email addresses are parsed from the `rname` field:
+ - Replacing with `@`:
+    - the second from last `.` (`email_parsed_last`)
+    - the first `.` (`email_parsed_first`)
 
- - Trailing periods are stripped
+Both likeliest email addresses are returned. It is then up to human inspection to decide which email is correct.
+
+Trailing periods are stripped
